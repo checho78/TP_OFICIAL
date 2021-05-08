@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html 	
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+		
+<ui:composition template="master.xhtml"> 
+	
+	<ui:define name="title">
+		.:Listado de  Farmacias:.
+	</ui:define>
+	
+	<ui:define name="titleCont">
+		<span>Farmacias</span>
+	</ui:define>
+	
+	<ui:define name="content">
+		<h:form>
+		
+			<div class="row" align="left">		
+				<div class="row">
+				
+					<div class="col-sm-4">
+						<div class="form-group">
+							<h:outputLabel for="name" value="Búsqueda"	styleClass="control-label" />
+							<p:inputText autocomplete="off" id="name"
+								styleClass="form-control"
+								value="#{pharmacyController.pharmacy.name}" maxlength="45" />
+						</div>
+					</div>				
+				
+				
+				
+					<div class="col-sm-8 text-right">
+						<div class="form-group box-main-btn">
+							<span style="display: block; height:30px;"></span>
+							
+							
+							
+							
+								<p:commandButton value="Limpiar" update="lstCliente"
+									actionListener="#{pharmacyController.clean()}"
+									styleClass="btn btn-default" ajax="false" />
+									
+									
+								<p:commandButton value="Buscar" update="lstCliente"
+									actionListener="#{pharmacyController.findByName()}"
+									styleClass="btn btn-danger" ajax="true" />						
+							
+							<p:commandButton value="Nuevo"						
+								action="#{pharmacyController.newPharmacy()}"
+								styleClass="btn btn-primary ajax=false" />
+								
+								
+								
+								
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						
+						<p:dataTable id="lstCliente" var="hope"
+							value="#{pharmacyController.listPharmacies}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+
+
+
+
+
+							<p:column headerText="Id" sortBy="#{hope.idPharmacy}">
+								<h:outputText value="#{hope.idPharmacy}" />
+							</p:column>
+
+							<p:column headerText= "Nombre " sortBy="#{hope.name}">
+								<h:outputText value="#{hope.name}" />
+							</p:column>
+						
+							<p:column headerText= "Direccion " sortBy="#{hope.address}">
+								<h:outputText value="#{hope.address}" />
+							</p:column>
+							
+							<p:column headerText= "Distrito" sortBy="#{hope.district}">
+								<h:outputText value="#{hope.district}" />
+							</p:column>
+				
+							<p:column headerText= "Contraseña" sortBy="#{hope.password}">
+								<h:outputText value="#{hope.password}" />
+							</p:column>
+							
+							<p:column headerText= "Descripcion" sortBy="#{hope.description}">
+								<h:outputText value="#{hope.description}" />
+							</p:column>
+							
+							<p:column headerText= "Hora_de_inicio" sortBy="#{hope.startHour}">
+								<h:outputText value="#{hope.description}" />
+							</p:column>
+							
+							<p:column headerText= "Hora_de_termino" sortBy="#{hope.endHour}">
+								<h:outputText value="#{hope.endHour}" />
+							</p:column>
+							
+							<p:column headerText= "Ruc" sortBy="#{hope.ruc}">
+								<h:outputText value="#{hope.ruc}" />
+							</p:column>
+				
+		
+						</p:dataTable>
+						
+					</div>
+				</div>				
+			</div>									
+		</h:form>
+	</ui:define>
+	
+	<ui:define name="footerCont">
+	</ui:define>
+		
+</ui:composition> 
+</html>

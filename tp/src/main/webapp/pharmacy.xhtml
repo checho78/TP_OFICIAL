@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Farmacias:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Farmacias</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+		
+		
+			<h:outputLabel for="Nombre" value="Nombre"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="Nombre"
+				styleClass="form-control"
+				value="#{pharmacyController.pharmacy.name}" maxlength="30"
+				required="true" />
+				
+				
+					<h:outputLabel for="Direccion" value="Direccion"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="Direccion"
+				styleClass="form-control"
+				value="#{pharmacyController.pharmacy.address}" maxlength="30"
+				required="true" />
+				
+				
+						<h:outputLabel for="Distrito" value="Distrito"
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="Distrito"
+				styleClass="form-control"
+				value="#{pharmacyController.pharmacy.district}" maxlength="30"
+				required="true" />
+				
+				
+						<h:outputLabel for="Contraseña" value="Contraseña"
+						styleClass="control-label" />
+			<p:inputText autocomplete="off" id="Contraseña"
+				styleClass="form-control"
+				value="#{pharmacyController.pharmacy.password}" maxlength="30"
+				required="true" />
+				
+				
+						<h:outputLabel for="Descripcion" value="Descripcion"
+						styleClass="control-label" />
+			<p:inputText autocomplete="off" id="Descripcion"
+				styleClass="form-control"
+				value="#{pharmacyController.pharmacy.description}" maxlength="30"
+				required="true" />
+				
+	
+						<h:outputLabel for="Hora_de_inicio" value="Hora_de_inicio"
+						styleClass="control-label" />
+			<p:inputText autocomplete="off" id="Hora_de_inicio"
+				styleClass="form-control"
+				value="#{pharmacyController.pharmacy.startHour}" maxlength="30"
+				required="true" />
+				
+				<h:outputLabel for="Hora_de_termino" value="Hora_de_termino"
+						styleClass="control-label" />
+			<p:inputText autocomplete="off" id="Hora_de_termino"
+				styleClass="form-control"
+				value="#{pharmacyController.pharmacy.endHour}" maxlength="30"
+				required="true" />
+				
+				<h:outputLabel for="Ruc" value="Ruc"
+						styleClass="control-label" />
+			<p:inputText autocomplete="off" id="Ruc"
+				styleClass="form-control"
+				value="#{pharmacyController.pharmacy.ruc}" maxlength="30"
+				required="true" />
+
+
+			<br />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{pharmacyController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listPharmacy?faces-redirect=true" />
+				
+				
+			<p:commandButton value="Cancelar"
+				action="listPharmacy?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
