@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html 	
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+		
+<ui:composition template="master.xhtml"> 
+	
+	<ui:define name="title">
+		.:Listado de Productos:.
+	</ui:define>
+	
+	<ui:define name="titleCont">
+		<span>Productos</span>
+	</ui:define>
+	
+	<ui:define name="content">
+		<h:form>
+		
+			<div class="row" align="left">		
+				<div class="row">
+				
+					<div class="col-sm-4">
+						<div class="form-group">
+							<h:outputLabel for="name" value="Búsqueda"	styleClass="control-label" />
+							<p:inputText autocomplete="off" id="name"
+								styleClass="form-control"
+								value="#{productController.product.name}" maxlength="45" />
+						</div>
+					</div>				
+				
+				
+				
+					<div class="col-sm-8 text-right">
+						<div class="form-group box-main-btn">
+							<span style="display: block; height:30px;"></span>
+							
+							
+							
+							
+								<p:commandButton value="Limpiar" update="lstProducto"
+									actionListener="#{productController.clean()}"
+									styleClass="btn btn-default" ajax="false" />
+									
+									
+								<p:commandButton value="Buscar" update="lstProducto"
+									actionListener="#{productController.findByName()}"
+									styleClass="btn btn-danger" ajax="true" />						
+							
+							<p:commandButton value="Nuevo"						
+								action="#{productController.newProduct()}"
+								styleClass="btn btn-primary ajax=false" />
+								
+								
+								
+								
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						
+						<p:dataTable id="lstProducto" var="hope"
+							value="#{productController.listProducts}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+
+
+
+
+
+							<p:column headerText="Id" sortBy="#{hope.id}">
+								<h:outputText value="#{hope.id}" />
+							</p:column>
+
+							<p:column headerText= "Nombre " sortBy="#{hope.name}">
+								<h:outputText value="#{hope.name}" />
+							</p:column>
+						
+							<p:column headerText= "Precio " sortBy="#{hope.price}">
+								<h:outputText value="#{hope.price}" />
+							</p:column>
+							
+							<p:column headerText= "Descripcion" sortBy="#{hope.description}">
+								<h:outputText value="#{hope.description}" />
+							</p:column>
+			
+				
+		
+						</p:dataTable>
+						
+					</div>
+				</div>				
+			</div>									
+		</h:form>
+	</ui:define>
+	
+	<ui:define name="footerCont">
+	</ui:define>
+		
+</ui:composition> 
+</html>
