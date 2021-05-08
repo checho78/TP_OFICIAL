@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html 	
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+		
+<ui:composition template="master.xhtml"> 
+	
+	<ui:define name="title">
+		.:Listado de Reservaciones:.
+	</ui:define>
+	
+	<ui:define name="titleCont">
+		<span>Reservaciones</span>
+	</ui:define>
+	
+	<ui:define name="content">
+		<h:form>
+		
+			<div class="row" align="left">		
+				<div class="row">
+				
+					<div class="col-sm-4">
+						<div class="form-group">
+							<h:outputLabel for="name" value="Búsqueda"	styleClass="control-label" />
+							<p:inputText autocomplete="off" id="description"
+								styleClass="form-control"
+								value="#{reservationController.reservation.description}" maxlength="45" />
+						</div>
+					</div>				
+				
+				
+				
+					<div class="col-sm-8 text-right">
+						<div class="form-group box-main-btn">
+							<span style="display: block; height:30px;"></span>
+							
+							
+							
+							
+								<p:commandButton value="Limpiar" update="lstReservacion"
+									actionListener="#{reservationController.clean()}"
+									styleClass="btn btn-default" ajax="false" />
+									
+									
+								<p:commandButton value="Buscar" update="lstReservacion"
+									actionListener="#{reservationController.findByDescription()}"
+									styleClass="btn btn-danger" ajax="true" />						
+							
+							<p:commandButton value="Nuevo"						
+								action="#{reservationController.newReservation()}"
+								styleClass="btn btn-primary ajax=false" />
+								
+								
+								
+								
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						
+						<p:dataTable id="lstReservacion" var="hope"
+							value="#{reservationController.listReservations}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+
+							<p:column headerText="Id" sortBy="#{hope.id}">
+								<h:outputText value="#{hope.id}" />
+							</p:column>
+
+							<p:column headerText= "Descripcion" sortBy="#{hope.description}">
+								<h:outputText value="#{hope.description}" />
+							</p:column>
+						
+							<p:column headerText= "Precio" sortBy="#{hope.price}">
+								<h:outputText value="#{hope.price}" />
+							</p:column>
+							
+							<p:column headerText= "Comision" sortBy="#{hope.commission}">
+								<h:outputText value="#{hope.commission}" />
+							</p:column>
+				
+							<p:column headerText= "FechaInicio" sortBy="#{hope.startDate}">
+								<h:outputText value="#{hope.startDate}" />
+							</p:column>
+							
+							<p:column headerText= "FechaFin" sortBy="#{hope.endDate}">
+								<h:outputText value="#{hope.endDate}" />
+							</p:column>
+				
+		
+						</p:dataTable>
+						
+					</div>
+				</div>				
+			</div>									
+		</h:form>
+	</ui:define>
+	
+	<ui:define name="footerCont">
+	</ui:define>
+		
+</ui:composition> 
+</html>
