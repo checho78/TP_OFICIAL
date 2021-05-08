@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html 	
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+		
+<ui:composition template="master.xhtml"> 
+	
+	<ui:define name="title">
+		.:Listado de Tarjetas:.
+	</ui:define>
+	
+	<ui:define name="titleCont">
+		<span>Tarjetas</span>
+	</ui:define>
+	
+	<ui:define name="content">
+		<h:form>
+		
+			<div class="row" align="left">		
+				<div class="row">
+				
+					<div class="col-sm-4">
+						<div class="form-group">
+							<h:outputLabel for="name" value="Búsqueda"	styleClass="control-label" />
+							<p:inputText autocomplete="off" id="numCard"
+								styleClass="form-control"
+								value="#{cardController.card.numCard}" maxlength="45" />
+						</div>
+					</div>				
+				
+				
+				
+					<div class="col-sm-8 text-right">
+						<div class="form-group box-main-btn">
+							<span style="display: block; height:30px;"></span>
+							
+							
+							
+							
+								<p:commandButton value="Limpiar" update="lstCliente"
+									actionListener="#{cardController.clean()}"
+									styleClass="btn btn-default" ajax="false" />
+									
+									
+								<p:commandButton value="Buscar" update="lstCliente"
+									actionListener="#{cardController.findByName()}"
+									styleClass="btn btn-danger" ajax="true" />						
+							
+							<p:commandButton value="Nuevo"						
+								action="#{cardController.newCard()}"
+								styleClass="btn btn-primary ajax=false" />
+								
+								
+								
+								
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						
+						<p:dataTable id="lstCliente" var="hope"
+							value="#{cardController.listCards}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+
+
+
+
+
+							<p:column headerText="IdCard" sortBy="#{hope.idCard}">
+								<h:outputText value="#{hope.idCard}" />
+							</p:column>
+
+							<p:column headerText= "Nombre " sortBy="#{hope.numCard}">
+								<h:outputText value="#{hope.numCard}" />
+							</p:column>
+						
+							<p:column headerText= "Numero de Tarjeta " sortBy="#{hope.numCard}">
+								<h:outputText value="#{hope.numCard}" />
+							</p:column>
+							
+							<p:column headerText= "Fecha de Expiracion" sortBy="#{hope.expirationDate}">
+								<h:outputText value="#{hope.expirationDate}" />
+							</p:column>
+				
+							<p:column headerText= "CVV" sortBy="#{hope.cvv}">
+								<h:outputText value="#{hope.cvv}" />
+							</p:column>
+							
+							<p:column headerText="Cliente">
+								<h:outputText value="#{card.cliente.firstName}" />
+							</p:column>
+		
+						</p:dataTable>
+						
+					</div>
+				</div>				
+			</div>									
+		</h:form>
+	</ui:define>
+	
+	<ui:define name="footerCont">
+	</ui:define>
+		
+</ui:composition> 
+</html>
