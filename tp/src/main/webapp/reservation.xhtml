@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Reservas:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Reservas</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+		
+		
+			<h:outputLabel for="Descripcion" value="Descripcion"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="Descripcion"
+				styleClass="form-control"
+				value="#{reservationController.reservation.description}" maxlength="30"
+				required="true" />
+				
+				
+					<h:outputLabel for="Precio" value="Precio"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="Precio"
+				styleClass="form-control"
+				value="#{reservationController.reservation.price}" maxlength="30"
+				required="true" />
+				
+				
+						<h:outputLabel for="Comision" value="Comision"
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="Comision"
+				styleClass="form-control"
+				value="#{reservationController.reservation.commission}" maxlength="30"
+				required="true" />
+				
+				
+						<h:outputLabel for="Fecha_Inicio" value="Fecha_Inicio"
+						styleClass="control-label" />
+			<p:inputText autocomplete="off" id="Fecha_Inicio"
+				styleClass="form-control"
+				value="#{reservationController.reservation.startDate}" maxlength="30"
+				required="true" />
+				
+				
+						<h:outputLabel for="Fecha_Fin" value="Fecha_Fin"
+						styleClass="control-label" />
+			<p:inputText autocomplete="off" id="endDate"
+				styleClass="form-control"
+				value="#{reservationController.reservation.endDate}" maxlength="30"
+				required="true" />
+				
+	
+			<br />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{reservationController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listReservation?faces-redirect=true" />
+				
+				
+			<p:commandButton value="Cancelar"
+				action="listReservation?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
