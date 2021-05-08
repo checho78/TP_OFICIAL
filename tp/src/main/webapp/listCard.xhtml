@@ -98,8 +98,8 @@
 								<h:outputText value="#{hope.cvv}" />
 							</p:column>
 							
-							<p:column headerText="Cliente">
-								<h:outputText value="#{card.cliente.firstName}" />
+							<p:column headerText="Cliente" sortBy="#{hope.customer.firstName}">
+								<h:outputText value="#{hope.customer.firstName}" />
 							</p:column>
 		
 						</p:dataTable>

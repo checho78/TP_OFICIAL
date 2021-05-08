@@ -35,12 +35,13 @@ public class CardController implements Serializable {
 	 @PostConstruct
 	 public void init()
 	 {
-		 this.listCards =  new ArrayList<Card>();
+		 this.customer = new Customer();
 		 this.card = new Card();
-		 this.list();
 		 
 		 this.listCustomers =  new ArrayList<Customer>();
-		 this.customer = new Customer();
+		 this.listCards =  new ArrayList<Card>();
+		
+		 this.list();
 		 this.listCustomer();
 	 }
 	 public String newCard() {
