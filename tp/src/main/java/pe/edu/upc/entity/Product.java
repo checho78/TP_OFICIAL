@@ -25,15 +25,20 @@ public class Product {
 	@Column(name = "description", length = 100)
 	private String description;
 	
+    @ManyToOne
+	@JoinColumn(name="id")
+    private Pharmacy pharmacy;
+	
 
 	// getters and  setter
 
-	public Product(int id, String name, Double price, String description) {
+	public Product(int id, String name, Double price, String description, Pharmacy pharmacy) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.description = description;
+		this.pharmacy = pharmacy;
 	
 
 	}
@@ -82,5 +87,11 @@ public class Product {
 		this.description = description;
 	}
 
+	public Pharmacy getPharmacy() {
+		return pharmacy;
+	}
 
+	public void setPharmacy(Pharmacy pharmacy) {
+		this.pharmacy = pharmacy;
+	}
 }

@@ -10,9 +10,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 
+import pe.edu.upc.entity.Pharmacy;
 import pe.edu.upc.entity.Product;
 
 import pe.edu.upc.service.IProductService;
+import pe.edu.upc.service.IPharmacyService;
 
 @Named
 @RequestScoped
@@ -28,18 +30,20 @@ public class ProductController implements Serializable{
 	private Product product;
 	List<Product> listProducts;
 	
-
+	private Pharmacy pharmacy;
+	List<Pharmacy> listPharmacies;
 
 	@PostConstruct
 	public void init() {
 		this.product = new Product();	
-	
+		this.pharmacy = new Pharmacy();
 
 		
 		this.listProducts = new ArrayList<Product>();
-		
+		this.listPharmacies = new ArrayList<Pharmacy>();
+
 		this.list();
-	
+		this.listPharmacy();
 
 		}
 	
@@ -59,7 +63,12 @@ public class ProductController implements Serializable{
 	}
 
 	
-
+	 public void listPharmacy() {
+			listPharmacies = pS.list();
+			
+		}
+		
+	
 	
 	public void clean() {
 		this.init();
@@ -105,7 +114,18 @@ public class ProductController implements Serializable{
 		this.listProducts = listProducts;
 	}
 
-
+	public Pharmacy getPharmacy() {
+		return pharmacy;
+	}
+	public void setPharmacy(Pharmacy pharmacy) {
+		this.pharmacy = pharmacy;
+	}
+	public List<Pharmacy> getListPharmacies() {
+		return listPharmacies;
+	}
+	public void setListPharmacies(List<Pharmacy> listPharmacies) {
+		this.listPharmacies = listPharmacies;
+	}
 	
 	
 	
