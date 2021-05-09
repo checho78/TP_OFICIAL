@@ -26,6 +26,9 @@ public class ProductController implements Serializable{
 	@Inject
 	private IProductService pS;
 	
+	@Inject
+	private IPharmacyService phS;
+	
 
 	private Product product;
 	List<Product> listProducts;
@@ -64,7 +67,7 @@ public class ProductController implements Serializable{
 
 	
 	 public void listPharmacy() {
-			listPharmacies = pS.list();
+			listPharmacies = phS.list();
 			
 		}
 		
@@ -76,7 +79,7 @@ public class ProductController implements Serializable{
 	
 	public void eliminar(Product p) {
 		try {
-			pS.eliminar(p.getId());
+			pS.eliminar(p.getIdProduct());
 			this.list();
 		}
 		catch(Exception ex){
