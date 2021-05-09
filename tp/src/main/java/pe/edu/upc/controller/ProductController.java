@@ -9,6 +9,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+
 import pe.edu.upc.entity.Product;
 
 import pe.edu.upc.service.IProductService;
@@ -25,18 +26,20 @@ public class ProductController implements Serializable{
 	
 
 	private Product product;
-	
-	
 	List<Product> listProducts;
+	
+
 
 	@PostConstruct
 	public void init() {
 		this.product = new Product();	
+	
 
 		
 		this.listProducts = new ArrayList<Product>();
-
+		
 		this.list();
+	
 
 		}
 	
@@ -56,8 +59,7 @@ public class ProductController implements Serializable{
 	}
 
 	
-	
-	
+
 	
 	public void clean() {
 		this.init();

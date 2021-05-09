@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,8 +25,7 @@ public class Product {
 	@Column(name = "description", length = 100)
 	private String description;
 	
-	
-	
+
 	// getters and  setter
 
 	public Product(int id, String name, Double price, String description) {
@@ -33,6 +34,7 @@ public class Product {
 		this.name = name;
 		this.price = price;
 		this.description = description;
+	
 
 	}
 
@@ -75,7 +77,6 @@ public class Product {
 	public String getDescription() {
 		return description;
 	}
-
 
 	public void setDescription(String description) {
 		this.description = description;
